@@ -1,25 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projet de la meute de Reims au grand complet :
+Vincent Guégan et Lucas Piquet
 
-Things you may want to cover:
+Projet fonctionnel, pour des tests via les seeds Faker ou entrées lambdas dans la console.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# thp_S4J4_freedoc
+> git clone 
+> bundle install à la racine du projet 
+> rails db:seed pour seeder avec Faker 
+> rails console pour tester le projet
