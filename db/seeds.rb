@@ -8,23 +8,53 @@
 
 require 'faker'
 
-20.times do |index|
-  doctor = Doctor.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, speciality: Faker::Job.title, zip_code: Faker::Code.npi)
+
+City.destroy_all
+Doctor.destroy_all
+Patient.destroy_all
+Appointment.destroy_all
+Specialty.destroy_all
+JoinSpecialtyDoctor.destroy_all
+
+
+
+15.times do |index|
+  City.create(city_name: Faker::Address.city)
 end
 
-20.times do |index|
-  patient = Patient.create!(first_name: Faker::Name.first_name, last_name: Faker::FunnyName.two_word_name)
+15.times do |index|
+  Patient.create(
+    last_name: Faker::Name.last_name,
+    first_name: Faker::Name.first_name,
+	  )
 end
 
-20.times do |index|
-  appointment = Appointment.create!(date: Faker::Date.forward(45), patient: Patient.all.sample, doctor: Doctor.all.sample)
+15.times do |index|
+  Doctor.create(
+    last_name: Faker::Name.last_name,
+    first_name: Faker::Name.first_name,
+    zip_code: Faker::Address.zip_code,
+  )
 end
 
-20.times do |index|
-  city = City.create!(city_name: Faker::Address.city)
+15.times do |index|
+  Specialty.create(
+    name: ["Ophtalmo", "Urgences", "MPR"].sample
+  )
 end
 
-20.times do |index|
-  specialty = Specialty.create!(name: Faker::Job.title)
+15.times do |index|
+  JoinSpecialtyDoctor.create(
+    doctor_id: rand(Doctor.first.id..Doctor.last.id),
+    specialty_id: rand(Specialty.first.id..Specialty.last.id)
+  )
 end
 
+30.times do |index|
+  Appointment.create(
+    date: Faker::Date.forward(45),
+    doctor: Doctor.all.sample,
+    patient: Patient.all.sample,
+    city: City.all.sample
+  )
+end
