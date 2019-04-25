@@ -8,7 +8,7 @@
 
 require 'faker'
 
-
+# Suppriment toutes les entrées précédentes (seul les id sont incrémentés)
 City.destroy_all
 Doctor.destroy_all
 Patient.destroy_all
